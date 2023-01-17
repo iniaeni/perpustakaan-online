@@ -16,3 +16,7 @@ use App\Http\Controllers\WikbookController;
 
 Route::get('/', [WikbookController::class, 'index'])->name('index');
 Route::get('/register', [WikbookController::class, 'register'])->name('register');
+Route::post('/inputRegister', [WikbookController::class, 'inputRegister'])->name('inputRegister');
+Route::get('/login', [WikbookController::class, 'login'])->name('login');
+Route::post('/log-in', [WikbookController::class, 'auth'])->name('auth.login');
+Route::get('/E-Wikbook', [WikbookController::class, 'ebook'])->name('E-Wikbook');

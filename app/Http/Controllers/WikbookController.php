@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Wikbook;
 use Illuminate\Http\Request;
-
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 class WikbookController extends Controller
 {
     /**
@@ -21,6 +23,53 @@ class WikbookController extends Controller
     public function register()
     {
         return view('dashboard.register');
+    }
+
+    public function inputRegister(Request $request)
+    {
+        $request->validate([
+            'name'=> 'required|min:3',
+            'email'=> 'required',
+            'password'=> 'required',
+            'address'=> 'required',
+            'no_telp'=> 'required',
+        ]);
+
+        User::create([
+            'name'=> $request->name,
+            'email'=> $request->email,
+            'password'=> Hash::make($request->password),
+            'address'=>$request->address,
+            'no_telp'=>$request->no_telp,
+        ]);
+
+        return redirect('/login');
+    }
+
+    public function login()
+    {
+        return view('dashboard.login');
+    }
+
+    public function auth(Request $request)
+    {
+        $request->validate([
+            'email'=> 'required|exists:users,email',
+            'password'=> 'required',
+        ],[
+            'email.exists' =>"Akun belum ada !"
+        ]);
+        $user = $request->only('email', 'password');
+        if (Auth::attempt($user)){
+            return redirect()->route('E-Wikbook');
+        }else{
+            return redirect('login')->with('fail',"Gagal login, periksa dan coba lagi");
+        }
+    }
+
+    public function ebook()
+    {
+        return view('dashboard.Ebook');
     }
 
     /**

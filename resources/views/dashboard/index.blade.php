@@ -1,14 +1,14 @@
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>WIKBOOK</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
+  <link href="{{asset('assets/img/logow.png')}}" rel="icon">
 
+ 
 
   <link href="{{asset('assets/img/logo.png')}}" rel="icon">
  
@@ -41,7 +41,7 @@
       <nav id="navbar" class="navbar">
         <ul>
           <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-          <li><a class="getstarted scrollto" href="#features">Login</a></li>
+          <li><a class="getstarted scrollto" href="/login">Login</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
     </nav>
@@ -58,7 +58,7 @@
           <div>
             <h1>Better Solutions For Your Choice Book</h1>
             <h2>We can access book for online and free</h2>
-            <a href="/register" class="download-btn text-center">Register</a>
+            <a href="/register" class="btn btn btn-lg text-white" style="background: #748ec6;">Register</a>
 
           </div>
         </div>
@@ -77,9 +77,11 @@
         <h2>ABOUT US</h2>
         <p>More than 99 books that you can access on this wikbook web for free,we provide books that can be read online so that knowledge is wider</p>
       </div>
-      <div class="alert alert-secondary text-center" role="alert">
+      <div class="shadow p-3 mb-5 bg-body-tertiary rounded text-center"><a href="">Learn More</a></div>
+
+      <!-- <div class="alert alert-secondary text-center" role="alert">
       <a href="">Learn More</a>  
-      </div>
+      </div> -->
       </div>
 
     </div>

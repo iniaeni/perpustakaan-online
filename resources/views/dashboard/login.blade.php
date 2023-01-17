@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,69 +13,59 @@
 <body>
     <section class="vh-100">
         <div class="container-fluid h-custom">
+            
+    @if ($errors->any())
+    <center>
+    <div class="alert alert-danger alert-dismissible fade show w-50" role="alert">
+    <ul>
+           @foreach ($errors->all() as $error)
+               <li>{{ $error }}</li>
+           @endforeach
+       </ul>
+     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    </center>
+    @endif
+            
+     
+     @if (Session::get('fail'))
+     <center>
+     <div class="alert alert-danger alert-dismissible fade show w-50" role="alert">
+     {{Session::get('fail')}}
+     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    </center>   
+    @endif
           <div class="row d-flex justify-content-center align-items-center h-100">
-            <div class="col-md-9 col-lg-6 col-xl-5">
-              <img src="{{asset('assets/img/register.jpg')}}"
+          <div class="col-md-9 col-lg-6 col-xl-5">
+          <img src="{{asset('assets/img/login.jpg')}}"
                 class="img-fluid" alt="Sample image">
+           
             </div>
             <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-            @if ($errors->any())
-              <center>
-              <div class="alert alert-danger alert-dismissible fade show w-100" role="alert">
-              <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-              </div>
-              </center>
-              @endif
-              <form action="{{route('inputRegister')}}" method="POST">
+            <form action="{{route('auth.login')}}" method="POST">
                 @csrf
                 <div class="d-flex flex-row align-items-center justify-content-center ">
-                  <h2 class="text center mb-3"><strong>REGISTER<hr></strong> </h2>
-                 
-                </div>
-    
-                <!-- Email input -->
-                <div class="form-outline ">
-                  <input type="text" id="" class="form-control form-control-lg mb-3 mt-0"
-                  name="name" placeholder="Enter your name" />
-                  
+                  <h2 class="text center mb-3"><strong>LOGIN<hr></strong> </h2> 
                 </div>
                 <div class="form-outline mb-3"> 
                   <input type="email" id="form3Example3" class="form-control form-control-lg"
-                    placeholder="Enter your email" name="email"/>
-                  
-                </div>
-                <div class="form-outline mb-4">
-                  <input type="text" id="form3Example3" class="form-control form-control-lg"
-                    placeholder="Enter your domicile" name="address" />
-                  
-                </div>
-                <div class="form-outline mb-4">
-                  <input type="text" id="form3Example3" class="form-control form-control-lg"
-                    placeholder="Enter phone no" name="no_telp"/>
-                  
+                    placeholder="Enter your email" name="email"/>   
                 </div>
                 <div class="form-outline mb-3">
-
                   <input type="password" id="form3Example4" class="form-control form-control-lg"
                     placeholder="Enter password" name="password"/>
-                 
                 </div>
-      
-               
-      
-                <div class="text-center text-lg-start mt-4 pt-1">
+                <div class="text-center text-lg-start mt-4 pt-2">
                   <button type="submit" class="btn btn btn-lg"
-                    style="padding-left: 2.5rem; padding-right: 2.5rem;background:#f67d6a;">Register</button>
-                  <p class="small fw-bold mt-2 pt-1 mb-0">Have an account? <a href="/login"
-                      class="link-danger">Login</a></p>
+                    style="padding-left: 2.5rem; padding-right: 2.5rem; background:#f67d6a;">Login</button>
+                  <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a href="/register"
+                      class="link-danger">Register</a></p>
                 </div>
       
               </form>
+          
+             
             </div>
           </div>
         </div>
